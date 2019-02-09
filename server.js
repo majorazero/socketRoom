@@ -23,6 +23,10 @@ app.get("*", (req, res) => {
 
 io.on('connection', (socket)=> {
   console.log("a user connected");
+  socket.on('change color',(color) => {
+    console.log('chaaaanging colors');
+    io.sockets.emit('change color',color);
+  });
 })
 
 http.listen(PORT, () => {
